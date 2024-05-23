@@ -1,42 +1,18 @@
-const menuBtn = document.getElementById("menu-btn");
-const navLinks = document.getElementById("nav-links");
-const menuBtnIcon = menuBtn.querySelector("i");
+let display = document.getElementById('display');
 
-menuBtn.addEventListener("click", (e) => {
-  navLinks.classList.toggle("open");
+function appendToDisplay(value) {
+  display.value += value;
+}
 
-  const isOpen = navLinks.classList.contains("open");
-  menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
-});
+function clearDisplay() {
+  display.value = '';
+}
 
-navLinks.addEventListener("click", (e) => {
-  navLinks.classList.remove("open");
-  menuBtnIcon.setAttribute("class", "ri-menu-line");
-});
+function calculate() {
+  try {
+    display.value = eval(display.value);
+  } catch(error) {
+    display.value = 'Error';
+  }
+}
 
-const scrollRevealOption = {
-  distance: "50px",
-  origin: "bottom",
-  duration: 1000,
-};
-
-ScrollReveal().reveal(".header__image img", {
-  ...scrollRevealOption,
-  origin: "right",
-});
-ScrollReveal().reveal(".header__content h2", {
-  ...scrollRevealOption,
-  delay: 500,
-});
-ScrollReveal().reveal(".header__content h1", {
-  ...scrollRevealOption,
-  delay: 1000,
-});
-ScrollReveal().reveal(".header__content p", {
-  ...scrollRevealOption,
-  delay: 1500,
-});
-ScrollReveal().reveal(".header__btns", {
-  ...scrollRevealOption,
-  delay: 2000,
-});
